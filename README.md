@@ -1,8 +1,12 @@
-# Zena
+# ForHer / PCOSense + Zena
 
-**Healthcare in the U.S. explained without the confusion.**
+## PCOSense (default `app.py`)
 
-Zena is an interactive Shiny web application for first-generation and international female students to understand preventive healthcare in the United States. It uses the MyHealthfinder API for official recommendations and Ollama (Cloud or local) for text simplification, cultural context, and personalized summaries.
+**PCOSense: Multi-Agent System for Polycystic Ovary Syndrome Detection** — main Shiny UI in [`src/app/pcosense_app.py`](src/app/pcosense_app.py). Run **`shiny run app.py`**. Features: patient form → **Data Validator → Evidence Retriever (Chroma RAG + PubMed) → Risk Assessor (XGBoost + SHAP + NHANES + LLM)**; snapshot stats, **SHAP chart**, agent/tool/RAG transparency panels, raw JSON. Use **FastAPI** (`uvicorn src.api.main:app`) or **Run in-process** when `PCOSOrchestrator` is available.
+
+## Zena (course app — `src/app/zena_app.py`)
+
+**Healthcare in the U.S. explained without the confusion.** Zena is an interactive Shiny app for first-generation and international female students. It uses the **MyHealthfinder API** and Ollama for preventive-care guidance. Run: **`shiny run src/app/zena_app.py`**.
 
 ## Features
 
@@ -30,9 +34,18 @@ pip install -r requirements.txt
 # 2. Copy .env.example to .env and add your OLLAMA_API_KEY (or use local Ollama)
 cp .env.example .env
 
-# 3. Run app
+# 3. Run PCOSense (default)
 shiny run --reload app.py
+
+# Optional: Zena course app
+# shiny run --reload src/app/zena_app.py
 ```
+
+## App V2 (Zena course rubric)
+
+Zena V2 (`src/app/zena_app.py`) adds **MyHealthfinder** tool calling, **SQLite RAG**, matplotlib analytics, and optional **`ZENA_APP_PASSWORD`**. Docs: [`docs/APP_V2_DOCUMENTATION.md`](docs/APP_V2_DOCUMENTATION.md). **Deployment:** [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+
+**PCOSense** optional gate: set **`PCOSENSE_APP_PASSWORD`** (see `.env.example`).
 
 ## API Keys & AI
 

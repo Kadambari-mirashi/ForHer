@@ -4,3 +4,10 @@ requests>=2.31.0
 matplotlib>=3.8.0
 python-dotenv>=1.0.0
 jinja2>=3.0.0
+
+# PCOSense Phase 3 — API + Shiny → orchestrator
+fastapi>=0.110
+uvicorn[standard]>=0.29
+httpx>=0.27
+pydantic>=2.6
+supabase>=2.4

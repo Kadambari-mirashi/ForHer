@@ -5,6 +5,7 @@ Uses Ollama Cloud (gpt-oss:120b) or local. Caches outputs for efficiency.
 
 import hashlib
 import os
+import re
 import requests
 
 # Simple in-memory cache (per session)
